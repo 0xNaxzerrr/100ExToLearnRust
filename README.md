@@ -17,7 +17,7 @@ wr
 
 ## Ressources
 
- - [Rust-Eexecices.](https://rust-exercises.com/100-exercises/)
+ - [Rust-Exercices](https://rust-exercises.com/100-exercises/)
  - [Official documentation](https://www.rust-lang.org/learn)
  - [Playground](https://play.rust-lang.org/)
 
