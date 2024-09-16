@@ -1,28 +1,10 @@
-// TODO: A (derivable) trait implementation is missing for this exercise to compile successfully.
-//   Fix it!
-//
-// # `Debug` primer
-//
-// `Debug` returns a representation of a Rust type that's suitable for debugging (hence the name).
-// `assert_eq!` requires `Ticket` to implement `Debug` because, when the assertion fails, it tries to
-// print both sides of the comparison to the terminal.
-// If the compared type doesn't implement `Debug`, it doesn't know how to represent them!
-
-#[derive(PartialEq)]
-
+#[derive(Debug, PartialEq)]  // On dérive à la fois PartialEq et Debug
 struct Ticket {
     title: String,
     description: String,
     status: String,
 }
 
-impl Debug for Ticket {
-    fn eq(&self, other: &Ticket) -> bool {
-        self.title == other.title
-            && self.description == other.description
-            && self.status == other.status
-    }
-}
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -42,7 +24,7 @@ mod tests {
             description: description.to_string(),
             status: status.to_string(),
         };
-        assert_eq!(ticket1, ticket2);
+        assert_eq!(ticket1, ticket2);  // `assert_eq!` va maintenant fonctionner car `Debug` est dérivé
     }
 
     #[test]
@@ -59,7 +41,7 @@ mod tests {
             description: "description2".to_string(),
             status: status.to_string(),
         };
-        assert_ne!(ticket1, ticket2);
+        assert_ne!(ticket1, ticket2);  // `assert_ne!` fonctionne car `PartialEq` est dérivé
     }
 
     #[test]
